@@ -8,4 +8,4 @@ public class GorideApplication {
     public static void main(String[] args) {
         SpringApplication.run(GorideApplication.class, args);
     }
-}
+}   

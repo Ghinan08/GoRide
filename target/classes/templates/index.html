@@ -91,16 +91,18 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section text-center">
-        <div class="container">
-            <h1 class="display-4 fw-bold mb-4">Ride With Confidence</h1>
-            <p class="lead mb-5">Affordable, reliable, and safe transportation at your fingertips</p>
-            <a th:href="@{/ride/request}" class="btn btn-light btn-lg px-4 me-2">
-                <i class="fas fa-motorcycle me-2"></i>Book Now
-            </a>
-            <a th:href="@{/user/dashboard}" class="btn btn-outline-light btn-lg px-4">
-                <i class="fas fa-user me-2"></i>User Dashboard
-            </a>
+    <section class="hero text-white">
+        <div class="container text-center">
+            <h1 class="display-3 fw-bold mb-4">Your Ride, Simplified</h1>
+            <p class="lead mb-5">Safe, affordable rides in just 2 taps</p>
+            <div class="d-flex gap-3 justify-content-center">
+                <a th:href="@{/ride/request}" class="btn btn-light cta-button">
+                    <i class="fas fa-map-marker-alt me-2"></i>Book Now
+                </a>
+                <a th:href="@{/user/dashboard}" class="btn btn-outline-light cta-button">
+                    <i class="fas fa-user me-2"></i>My Account
+                </a>
+            </div>
         </div>
     </section>
 
@@ -168,7 +170,7 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-4">
-                    <h4><i class="fas fa-bolt me-2"></i>GoRide</h4>
+                    <h4>GoRide</h4>
                     <p class="text-white-50">Making urban mobility simple and accessible</p>
                 </div>
                 <div class="col-md-2">
