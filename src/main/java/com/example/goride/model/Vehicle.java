@@ -1,0 +1,35 @@
+package com.example.goride.model;
+
+public class Vehicle {
+    private String plateNumber;
+    private String model;
+    private String type;
+
+    public Vehicle(String plateNumber, String model, String type) {
+        this.plateNumber = plateNumber;
+        this.model = model;
+        this.type = type;
+    }
+
+    public void assignToDriver(int driverId) {
+        // Implementation for assignToDriver
+    }
+
+    public void updateInfo(String model, String type) {
+        this.model = model;
+        this.type = type;
+    }
+
+    // Getters and Setters
+    public String getPlateNumber() {
+        return plateNumber;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public String getType() {
+        return type;
+    }
+}
