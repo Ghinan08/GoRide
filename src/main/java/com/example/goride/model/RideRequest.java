@@ -1,31 +1,76 @@
 package com.example.goride.model;
 
-public class RideRequest implements RideAction {
-    private int userId;
-    private String pickupLocation;
+public class RideRequest {
+    private long id;
+    private String pickup;
     private String destination;
+    private String rideType;
+    private String notes;
+    private String status;
+    private User user;
 
-    public RideRequest(int userId, String pickupLocation, String destination) {
-        this.userId = userId;
-        this.pickupLocation = pickupLocation;
+    public RideRequest() {}
+
+    public RideRequest(long id, String pickup, String destination) {
+        this.id = id;
+        this.pickup = pickup;
         this.destination = destination;
     }
 
-    public void createRequest() {
-        System.out.println("Ride request created.");
+    // Getter dan Setter
+    public long getId() {
+        return id;
     }
 
-    public void cancelRequest() {
-        System.out.println("Ride request cancelled.");
+    public void setId(long id) {
+        this.id = id;
     }
 
-    @Override
-    public void startRide() {
-        System.out.println("Ride started.");
+    public String getPickup() {
+        return pickup;
     }
 
-    @Override
-    public void endRide() {
-        System.out.println("Ride ended.");
+    public void setPickup(String pickup) {
+        this.pickup = pickup;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public String getRideType() {
+        return rideType;
+    }
+
+    public void setRideType(String rideType) {
+        this.rideType = rideType;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
