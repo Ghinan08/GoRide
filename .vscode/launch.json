@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-GorideApplication<goride-oop>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.goride.GorideApplication",
+            "projectName": "goride-oop",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
