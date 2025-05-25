@@ -3,89 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoRide - Ride With Confidence</title>
+    <title>GoRide - Ride Hailing App</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #00C853;
-            --gradient-start: #00C853;
-            --gradient-end: #0091EA;
-            --dark-color: #1A237E;
+            --primary-color: #00a859;
+            --secondary-color: #ffc107;
+            --dark-color: #343a40;
+            --light-color: #f8f9fa;
         }
         
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
         }
-
-        .hero {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            clip-path: ellipse(100% 100% at 50% 0%);
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), #008a50);
+            color: white;
+            padding: 5rem 0;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-
-        .cta-button {
-            padding: 1rem 2rem;
-            border-radius: 2rem;
-            font-weight: 600;
-            transition: transform 0.2s;
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
         }
-
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
         .feature-card {
+            border-radius: 15px;
+            transition: transform 0.3s;
             border: none;
-            border-radius: 1.5rem;
-            padding: 2rem;
-            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
         }
-
+        
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
-
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
         }
-
+        
         footer {
-            background: var(--dark-color);
+            background-color: var(--dark-color);
             color: white;
-            padding: 4rem 0;
-        }
-
-        .social-icon {
-            font-size: 1.5rem;
-            margin: 0 0.5rem;
-            transition: opacity 0.2s;
-        }
-
-        .social-icon:hover {
-            opacity: 0.8;
+            padding: 2rem 0;
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg py-3">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand fw-bold fs-4" href="#">
-                <i class="fa-solid fa-motorcycle"></i> GoRide
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-motorcycle me-2"></i>GoRide
             </a>
-            <div class="d-flex align-items-center">
-                <a th:href="@{/ride/request}" class="btn btn-primary cta-button">
-                    Get Started
-                </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/user/dashboard}">User Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/driver/dashboard}">Driver Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/ride/request}">Book a Ride</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -93,7 +96,7 @@
     <!-- Hero Section -->
     <section class="hero-section text-center">
         <div class="container">
-            <h1 class="display-4 fw-bold mb-4">Ride With Confidence</h1>
+            <h1 class="display-4 fw-bold mb-4">Register</h1>
             <p class="lead mb-5">Affordable, reliable, and safe transportation at your fingertips</p>
             <a th:href="@{/ride/request}" class="btn btn-light btn-lg px-4 me-2">
                 <i class="fas fa-motorcycle me-2"></i>Book Now
@@ -104,35 +107,35 @@
         </div>
     </section>
 
-    <!-- Key Features -->
+    <!-- Features Section -->
     <section class="py-5">
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="feature-card bg-white">
-                        <div class="text-primary fs-1 mb-3">
-                            <i class="fas fa-stopwatch"></i>
+                    <div class="card feature-card h-100 text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
                         </div>
-                        <h3>5-Minute Pickup</h3>
-                        <p class="text-muted">Average arrival faster than making instant coffee</p>
+                        <h3>Fast Pickup</h3>
+                        <p>Average pickup time under 5 minutes in most areas</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-card bg-white">
-                        <div class="text-primary fs-1 mb-3">
+                    <div class="card feature-card h-100 text-center p-4">
+                        <div class="feature-icon">
                             <i class="fas fa-shield-alt"></i>
                         </div>
-                        <h3>Safe Journey</h3>
-                        <p class="text-muted">24/7 ride tracking and emergency support</p>
+                        <h3>Safe Rides</h3>
+                        <p>All drivers are verified and rides are tracked in real-time</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-card bg-white">
-                        <div class="text-primary fs-1 mb-3">
-                            <i class="fas fa-coins"></i>
+                    <div class="card feature-card h-100 text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-wallet"></i>
                         </div>
-                        <h3>Fair Prices</h3>
-                        <p class="text-muted">Know your fare before booking</p>
+                        <h3>Affordable</h3>
+                        <p>Competitive pricing with transparent fare calculation</p>
                     </div>
                 </div>
             </div>
@@ -142,63 +145,72 @@
     <!-- How It Works -->
     <section class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center mb-5">Simple as 1-2-3</h2>
-            <div class="row g-5 justify-content-center">
-                <div class="col-md-3 text-center">
-                    <div class="step-number mx-auto mb-3">1</div>
-                    <h4>Set Location</h4>
-                    <p class="text-muted">Enter where to and where from</p>
+            <h2 class="text-center mb-5">How GoRide Works</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 bg-transparent">
+                        <div class="card-body text-center">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px; font-size: 1.5rem; margin-bottom: 1rem;">
+                                1
+                            </div>
+                            <h4>Book a Ride</h4>
+                            <p>Enter your pickup and destination locations</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3 text-center">
-                    <div class="step-number mx-auto mb-3">2</div>
-                    <h4>Match Driver</h4>
-                    <p class="text-muted">Get connected instantly</p>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 bg-transparent">
+                        <div class="card-body text-center">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px; font-size: 1.5rem; margin-bottom: 1rem;">
+                                2
+                            </div>
+                            <h4>Get a Driver</h4>
+                            <p>We'll match you with the nearest available driver</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3 text-center">
-                    <div class="step-number mx-auto mb-3">3</div>
-                    <h4>Ride Safe</h4>
-                    <p class="text-muted">Track arrival and pay automatically</p>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 bg-transparent">
+                        <div class="card-body text-center">
+                            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px; font-size: 1.5rem; margin-bottom: 1rem;">
+                                3
+                            </div>
+                            <h4>Enjoy Your Ride</h4>
+                            <p>Track your driver and pay cashless for a seamless experience</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="mt-5">
         <div class="container">
-            <div class="row g-4">
+            <div class="row">
                 <div class="col-md-4">
-                    <h4><i class="fas fa-bolt me-2"></i>GoRide</h4>
-                    <p class="text-white-50">Making urban mobility simple and accessible</p>
+                    <h5><i class="fas fa-motorcycle me-2"></i>GoRide</h5>
+                    <p>Your reliable ride-hailing service for fast and affordable transportation.</p>
                 </div>
-                <div class="col-md-2">
-                    <h5>Company</h5>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white-50">About</a></li>
-                        <li><a href="#" class="text-white-50">Careers</a></li>
-                        <li><a href="#" class="text-white-50">Blog</a></li>
+                        <li><a th:href="@{/}" class="text-white">Home</a></li>
+                        <li><a th:href="@{/user/dashboard}" class="text-white">User Dashboard</a></li>
+                        <li><a th:href="@{/ride/request}" class="text-white">Book a Ride</a></li>
                     </ul>
                 </div>
-                <div class="col-md-3">
-                    <h5>Support</h5>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white-50">Help Center</a></li>
-                        <li><a href="#" class="text-white-50">Safety</a></li>
-                        <li><a href="#" class="text-white-50">Contact</a></li>
+                        <li><i class="fas fa-phone me-2"></i> +62 123 4567 890</li>
+                        <li><i class="fas fa-envelope me-2"></i> support@goride.com</li>
                     </ul>
-                </div>
-                <div class="col-md-3">
-                    <h5>Connect</h5>
-                    <div class="d-flex">
-                        <a href="#" class="text-white social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-white social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white social-icon"><i class="fab fa-facebook"></i></a>
-                    </div>
                 </div>
             </div>
-            <hr class="my-5">
-            <div class="text-center text-white-50">
-                <small>© 2023 GoRide Technologies</small>
+            <hr class="my-4 bg-light">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 GoRide. All rights reserved.</p>
             </div>
         </div>
     </footer>

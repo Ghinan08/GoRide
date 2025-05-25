@@ -1,4 +1,3 @@
-
 package com.example.goride.model;
 
 public abstract class Person {
