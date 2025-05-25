@@ -111,7 +111,7 @@
                             </a>
                         </li>
                         <li>
-                            <a th:href="@{/ride/request}" class="nav-link">
+                            <a th:href= "@{/rides/new}" class="nav-link">
                                 <i class="fas fa-plus-circle me-2"></i>
                                 New Ride
                             </a>
@@ -156,7 +156,7 @@
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Dashboard</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
-                        <a th:href="@{/ride/request}" class="btn btn-primary">
+                        <a th:href="@{/rides/new}" class="btn btn-primary">
                             <i class="fas fa-plus me-1"></i> New Ride
                         </a>
                     </div>
@@ -259,11 +259,16 @@
                             <form id="fareCalculatorForm">
                                 <div class="mb-3">
                                     <label for="pickupLocation" class="form-label">Pickup Location</label>
-                                    <input type="text" class="form-control" id="pickupLocation" placeholder="Enter pickup address">
+                                    <select class="form-select" id="pickupCalc" name="pickupCalc" required>
+                                        <option th:each="loc : ${locations}" th:value="${loc}" th:text="${loc}"></option>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="destination" class="form-label">Destination</label>
-                                    <input type="text" class="form-control" id="destination" placeholder="Enter destination address">
+                                    <select class="form-select" id="destinationCalc" name="destinationCalc" required>
+                                        <option th:each="loc : ${locations}" th:value="${loc}" th:text="${loc}"></option>
+                                    </select>
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="rideType" class="form-label">Ride Type</label>
@@ -428,45 +433,43 @@
         
         // Calculate fare based on inputs
         function calculateFare() {
-            // In a real app, this would call a backend service or use a map API
-            // For demo, we'll use random values
+            const pickup = document.getElementById('pickupCalc').value;
+            const destination = document.getElementById('destinationCalc').value;
             const rideType = document.getElementById('rideType').value;
-            const distance = (Math.random() * 10 + 2).toFixed(2); // Random distance 2-12 km
-            const duration = Math.floor(distance * 3 + 5); // Rough estimate
-            
-            let baseFare, ratePerKm;
-            switch(rideType) {
-                case 'regular':
-                    baseFare = 10000;
-                    ratePerKm = 2500;
-                    break;
-                case 'premium':
-                    baseFare = 15000;
-                    ratePerKm = 3500;
-                    break;
-                case 'xl':
-                    baseFare = 20000;
-                    ratePerKm = 4500;
-                    break;
-                default:
-                    baseFare = 10000;
-                    ratePerKm = 2500;
+
+            if (!pickup || !destination) {
+                alert('Silakan pilih lokasi awal dan tujuan');
+                return;
             }
-            
-            const distanceFare = Math.floor(distance * ratePerKm);
-            const totalFare = baseFare + distanceFare;
-            
-            // Update the UI
-            document.getElementById('distanceResult').textContent = distance + ' km';
-            document.getElementById('durationResult').textContent = duration + ' mins';
-            document.getElementById('baseFare').textContent = 'Rp ' + baseFare.toLocaleString();
-            document.getElementById('distanceFare').textContent = 'Rp ' + distanceFare.toLocaleString();
-            document.getElementById('totalFare').textContent = 'Rp ' + totalFare.toLocaleString();
-            
-            // Show results and book button
-            document.getElementById('fareResult').style.display = 'block';
-            document.getElementById('bookRideBtn').style.display = 'block';
-        }
+
+            if (pickup === destination) {
+                alert('Lokasi awal dan tujuan tidak boleh sama');
+                return;
+            }
+
+            fetch(`/rides/calculate-fare?pickup=${encodeURIComponent(pickup)}&destination=${encodeURIComponent(destination)}&rideType=${rideType}`)
+                .then(async response => {
+                    if (!response.ok) {
+                        const error = await response.json();
+                        throw new Error(error.error || 'Gagal menghitung tarif');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('distanceResult').textContent = `${data.distance} km`;
+                    document.getElementById('durationResult').textContent = `${data.duration} menit`;
+                    document.getElementById('baseFare').textContent = `Rp ${data.baseFare.toLocaleString('id-ID')}`;
+                    document.getElementById('distanceFare').textContent = `Rp ${data.distanceFare.toLocaleString('id-ID')}`;
+                    document.getElementById('totalFare').textContent = `Rp ${data.totalFare.toLocaleString('id-ID')}`;
+                    
+                    document.getElementById('fareResult').style.display = 'block';
+                    document.getElementById('bookRideBtn').style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert(error.message || 'Terjadi kesalahan saat menghitung tarif');
+                });
+    }
         
         // Submit ride request
         function submitRideRequest() {

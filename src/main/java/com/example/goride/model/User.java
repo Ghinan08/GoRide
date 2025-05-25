@@ -3,7 +3,7 @@ package com.example.goride.model;
 
 public class User extends Person {
 
-    public User(int id, String name, int phone, String email) {
+    public User(Long id, String name, int phone, String email) {
         super(id, name, phone, email);
     }
 
@@ -22,5 +22,15 @@ public class User extends Person {
     @Override
     public String getRole() {
         return "User";
+    }
+
+    public void setId(Long userId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setId'");
+    }
+
+    public void setName(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setName'");
     }
 }
