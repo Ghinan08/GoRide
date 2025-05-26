@@ -19,7 +19,6 @@ public class DriverStatus {
         this.isAvailable = false;
     }
 
-    // Getters and Setters
     public int getDriverId() {
         return driverId;
     }

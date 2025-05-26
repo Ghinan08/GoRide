@@ -14,14 +14,13 @@ public class Invoice {
     }
 
     public void generate() {
-        // Implementation for generate
+
     }
 
     public void sendToUser() {
-        // Implementation for sendToUser
+
     }
 
-    // Getters and Setters
     public int getId() {
         return id;
     }

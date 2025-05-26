@@ -1,9 +1,9 @@
 package com.example.goride.service;
 
-import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import org.springframework.stereotype.Service;
 
 @Service
 public class DistanceCalculator {
@@ -15,7 +15,6 @@ public class DistanceCalculator {
     }
 
     private void initializeDistances() {
-        // Data jarak dalam kilometer
         addDistance("Jl. Thamrin No. 10", "Plaza Senayan", 2);
         addDistance("Jl. Thamrin No. 10", "Kemang Raya", 8);
         addDistance("Jl. Thamrin No. 10", "Blok M Square", 3);

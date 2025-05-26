@@ -33,7 +33,6 @@ public class Order implements RideAction {
         this.status = "Completed";
     }
 
-    // Getters and Setters
     public int getId() {
         return id;
     }

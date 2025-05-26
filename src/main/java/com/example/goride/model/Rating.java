@@ -23,7 +23,6 @@ public class Rating {
         this.comment = newComment;
     }
 
-    // Getters and Setters
     public int getDriverId() {
         return driverId;
     }

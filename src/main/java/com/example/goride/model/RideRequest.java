@@ -17,7 +17,6 @@ public class RideRequest {
         this.destination = destination;
     }
 
-    // Getter dan Setter
     public long getId() {
         return id;
     }

@@ -16,10 +16,9 @@ public class Location {
     }
 
     public void viewRideHistory() {
-        // Implementation for viewRideHistory
+
     }
 
-    // Getters and Setters
     public double getLatitude() {
         return latitude;
     }

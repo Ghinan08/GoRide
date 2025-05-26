@@ -24,12 +24,10 @@ public class User extends Person {
     }
 
     public void setId(Long userId) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setId'");
     }
 
     public void setName(String string) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setName'");
     }
 }
