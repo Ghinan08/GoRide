@@ -25,14 +25,14 @@ public class FareCalculator {
                 baseFare = XL_BASE_FARE;
                 ratePerKm = XL_RATE_PER_KM;
                 break;
-            default: // regular
+            default: 
                 baseFare = REGULAR_BASE_FARE;
                 ratePerKm = REGULAR_RATE_PER_KM;
         }
         
         int distanceFare = distance * ratePerKm;
         int totalFare = baseFare + distanceFare;
-        int duration = distance * 3; // Estimasi 3 menit per km
+        int duration = distance * 3;
         
         return new FareDetails(distance, duration, baseFare, distanceFare, totalFare);
     }
@@ -52,7 +52,6 @@ public class FareCalculator {
             this.totalFare = totalFare;
         }
 
-        // Getter methods
         public int getDistance() { return distance; }
         public int getDuration() { return duration; }
         public int getBaseFare() { return baseFare; }

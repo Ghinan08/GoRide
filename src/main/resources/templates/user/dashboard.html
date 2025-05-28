@@ -421,17 +421,14 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // This would be replaced with actual map integration (Google Maps, Mapbox, etc.)
         function initMap() {
             console.log("Map would be initialized here with a real API key");
-            // For demo purposes, we'll just show a placeholder
             document.getElementById('map').innerHTML = 
                 '<div style="width:100%;height:100%;background:#f0f0f0;display:flex;align-items:center;justify-content:center;">' +
                 '<span style="color:#666;">Map would display here with real integration</span>' +
                 '</div>';
         }
         
-        // Calculate fare based on inputs
         function calculateFare() {
             const pickup = document.getElementById('pickupCalc').value;
             const destination = document.getElementById('destinationCalc').value;
@@ -471,7 +468,6 @@
                 });
     }
         
-        // Submit ride request
         function submitRideRequest() {
             const pickup = document.getElementById('modalPickup').value;
             const destination = document.getElementById('modalDestination').value;
@@ -483,7 +479,6 @@
                 return;
             }
             
-            // In a real app, this would send data to the backend
             console.log('Submitting ride request:', {
                 pickup,
                 destination,
@@ -491,18 +486,14 @@
                 notes
             });
             
-            // Show success message
             alert('Ride request submitted successfully! A driver will be assigned shortly.');
             
-            // Close modal
             const modal = bootstrap.Modal.getInstance(document.getElementById('addRideModal'));
             modal.hide();
             
-            // Reset form
             document.getElementById('rideForm').reset();
         }
         
-        // Initialize map when page loads
         window.onload = function() {
             initMap();
         };

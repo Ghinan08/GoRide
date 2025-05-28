@@ -21,9 +21,8 @@ public class Rating {
     public void edit(int newRating, String newComment) {
         this.ratingValue = newRating;
         this.comment = newComment;
-    }
+    } 
 
-    // Getters and Setters
     public int getDriverId() {
         return driverId;
     }

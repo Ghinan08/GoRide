@@ -12,7 +12,7 @@ public class Vehicle {
     }
 
     public void assignToDriver(int driverId) {
-        // Implementation for assignToDriver
+
     }
 
     public void updateInfo(String model, String type) {
@@ -20,7 +20,6 @@ public class Vehicle {
         this.type = type;
     }
 
-    // Getters and Setters
     public String getPlateNumber() {
         return plateNumber;
     }

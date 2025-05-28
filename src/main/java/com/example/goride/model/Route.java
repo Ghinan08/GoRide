@@ -10,26 +10,23 @@ public class Route implements RideAction {
     }
 
     public double estimateFare() {
-        // Simple fare calculation based on distance
-        return distance * 2000; // Rp 2,000 per km
+        return distance * 2000; 
     }
 
     public double calculateEta() {
-        // Simple ETA calculation based on distance and average speed (40 km/h)
-        return (distance / 40) * 60; // in minutes
+        return (distance / 40) * 60; 
     }
 
     @Override
     public void startRide() {
-        // Implementation for startRide
+
     }
 
     @Override
     public void endRide() {
-        // Implementation for endRide
+
     }
 
-    // Getters and Setters
     public double getDistance() {
         return distance;
     }
